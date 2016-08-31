@@ -195,4 +195,4 @@ for operation in concatenatedOperations:
 
     setattr(rezizerUrl, operation, _method)
 
-__all__ = [rezizerUrl]
+__all__ = [rezizer]
