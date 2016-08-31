@@ -95,7 +95,7 @@ def generateHash(secret=None, url=None):
     return hash.replace('+', '-').replace('/', '_').strip()
 
 
-class rezizerUrl:
+class rezizer:
     serverUrl = None
     secret = None
     operations = {}
