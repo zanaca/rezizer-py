@@ -2,7 +2,7 @@ from distutils.core import setup
 setup(
     name='rezizer',
     packages=['rezizer'],
-    version='0.1.0',
+    version='0.1.2',
     description='Rezizer URL generator - Building optmized image URLs',
     author='Zanaca',
     author_email='zanaca@gmail.com',
