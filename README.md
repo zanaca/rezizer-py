@@ -22,84 +22,84 @@ imageUrl = rezizerGenerator.withUrl('http://your.domain.url/foo/bar.jpg').resize
 ```
 
 # Supported operations
-## aligments
+## alignments
 - Aligns the image to one of it's edge or to the it's center. If you use `smart()` the system will find the most important part of the image and user it as center. They are themselves operations.
 Usage: `.north()`, `.east()`, `.south()`, `.west()`, `.northeast()`, `.southeast()`, `.southwest()`, `.northwest()`, `.smart()` or `.center()`.
 
 ## background
-- Set the background color of the image in color name format, #RRGGBB format or 255,255,255 format , where each channel is an integer from 0 to 255. You can specify `blur` to set the background as a distorted and blurred version of the image or `auto` to set the color from the most important color of the image.
+- Sets the background color of the image in color name format, #RRGGBB format or 255,255,255 format , where each channel is an integer from 0 to 255. You can specify `blur` to set the background as a distorted and blurred version of the image or `auto` to set the color from the most important color of the image.
 Available options: color name (`red`, `purple`), RGB hex color code (`FF0000`, `800080`), `blur` or `auto`.
 Usage: `.background('red')`
 
 ## blur
-- Blur the image to value from 1 to 1000.
+- Blurs the image to value from 1 to 1000.
 Available range: `1` to `1000`.
 Usage: `.blur(2)`
 
 ## crop
-- Crop a region of the image specified by the top-left coordinate and the bottom-right coordinate of the image. You must specify the four points: `.crop(100, 200, 300, 400)` where `100` is the top position, `200` is the right position, the `300` is the bottom position and `400` is the left position.
+- Crops a region of the image specified by the top-left coordinate and the bottom-right coordinate of the image. You must specify the four points: `.crop(100, 200, 300, 400)` where `100` is the top position, `200` is the right position, the `300` is the bottom position and `400` is the left position.
 Usage: `.crop(10, 20, 100, 110)`
 
 ## distort
-- Distort the image to the match the desired resize dimension. No parameter is expected.
+- Distorts the image to the match the desired resize dimension. No parameter is expected.
 Usage: `.distort()`
 
 ## extend
-- Extend the informed amount of pixels to each side of the image. The order to be used is: top, bottom, left, right.
+- Extends the informed amount of pixels to each side of the image. The order to be used is: top, bottom, left, right.
 Usage: `.extend(10, 20, 30, 40)`
 
 ## faceDetection
-- Detect faces in the image and use them as center of the image for cropping. If you specify the parameter `focused`, the image will focus and crop the image to the detected faces, or leave it blank to just align the image to the part that have faces.
+- Detects faces in the image and use them as center of the image for cropping. If you specify the parameter `focused`, the image will focus and crop the image to the detected faces, or leave it blank to just align the image to the part that have faces.
 Usage: `.faceDetection('focused')`
 
 
 ## fitIn
-- Maintain the image dimension ratio when resizing, adding black bars to the output image. If you combine it with `background`, you will change the color of the bars.
+- Maintains the image dimension ratio when resizing, adding black bars to the output image. If you combine it with `background`, you will change the color of the bars.
 Usage: `.fitIn()`
 
 ## fit
-- If the source image is smaller than the desired resize dimension, it will keep the image's dimension. If it is bigger, the image will be resized.
+- Ifs the source image is smaller than the desired resize dimension, it will keep the image's dimension. If it is bigger, the image will be resized.
 Usage: `.fit()`
 
 ## flip
-- Flip the image vertically.
+- Flips the image vertically.
 Usage: `.fit()`
 
 ## flop
-- Flop the image horizontally.
+- Flops the image horizontally.
 Usage: `.flop()`
 
 ## format
-- Change the output image format.
+- Changes the output image format.
 Available options: `jpeg`, `png`, `webp`
 Usage: `.format('jpeg')`
 
 ## grayscale
-- Change the color table of the image to grayscale.
+- Changes the color table of the image to grayscale.
 Usage: `.grayscale()`
 
 ## invert
-- Invert the image colors, making it a negative.
+- Inverts the image colors, making it a negative.
 Usage: `.invert()`
 
 ## map
-- Create a URL to generate mapping tiles for the informed image. All other operations will be removed when using it.
+- Creates a URL to generate mapping tiles for the informed image. All other operations will be removed when using it.
 Usage: `.map()`
 
 ## max
-- Change the resized dimensions to the max of height and width and fit with the image ratio.
+- Changes the resized dimensions to the max of height and width and fit with the image ratio.
 Usage: `.max()`
 
 ## maxAge
-- Change the max-age header to be used for caching the image on the client side
+- Changes the max-age header to be used for caching the image on the client side
 Usage: `.maxAge(3200)`
 
 ## maxKb
-- Set the max file size of the output image, in kilobytes.
+- Sets the max file size of the output image, in kilobytes.
 Usage: `.maxKb(5)`
 
 ## min
-- Change the resized dimensions to the min of height and width and fit with the image ratio.
+- Changes the resized dimensions to the min of height and width and fit with the image ratio.
 Usage: `.min()`
 
 ## overlay
@@ -107,19 +107,19 @@ Usage: `.min()`
 Usage: `.overlay('http://your.domain.own/image.jpg', 'northwest')`
 
 ## palette
-- Retrive *N* most important color from the image palette, the values are between 1 and 10. 5 if nothing is specified. All other operations will be removed when using it.
+- Retrieves *N* most important color from the image palette, the values are between 1 and 10. 5 if nothing is specified. All other operations will be removed when using it.
 Usage: `.palette()`
 
 ## progressive
-- Set progressive filter to the JPEG image.
+- Sets progressive filter to the JPEG image.
 Usage: `.progressive()`
 
 ## quality
-- Set output quality of the image filter to the JPEG image.
+- Sets output quality of the image filter to the JPEG image.
 Usage: `.quality(70)`
 
 ## resize
-- Set output dimension of the image with *height* and *width*.
+- Sets output dimension of the image with *height* and *width*.
 Usage: `.resize(100, 100)`
 
 ## rotate
@@ -132,7 +132,7 @@ Usage: `.round()`
 
 ## tile
 ## map
-- Create a URL to generate tiles in the zoomify format for the informed image. The origin image has no size limitations. All other operations will be removed when using it.
+- Creates a URL to generate tiles in the zoomify format for the informed image. The origin image has no size limitations. All other operations will be removed when using it.
 Usage: `.tile()`
 
 ## tint
