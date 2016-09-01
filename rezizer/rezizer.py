@@ -69,8 +69,8 @@ def _buildPath(operations):
             if alignment:
                 parts.append(alignment)
 
-        elif operation == 'face':
-            faceOperation = operation
+        elif operation == 'face_detection':
+            faceOperation = 'face'
             if operations[operataion] == 'focused':
                 faceOperataion += ':focused'
 
@@ -163,7 +163,7 @@ def __simpleFunction(name):
 for operation in __simpleOperations:
     _method = __simpleFunction(operation)
     if operation == 'fit-in':
-        operation = 'fitIn'
+        operation = 'fit_in'
 
     setattr(rezizerUrl, operation, _method)
 
@@ -188,10 +188,10 @@ for operation in __concatenatedOperations:
         continue
 
     if operation == 'max-kb':
-        method = 'maxKb'
+        method = 'max_kb'
 
     if operation == 'max-age':
-        method = 'maxAge'
+        method = 'max_age'
 
     setattr(rezizerUrl, operation, _method)
 

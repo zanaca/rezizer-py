@@ -48,9 +48,9 @@ Usage: `.distort()`
 - Extends the informed amount of pixels to each side of the image. The order to be used is: top, bottom, left, right.
 Usage: `.extend(10, 20, 30, 40)`
 
-## faceDetection
+## face_detection
 - Detects faces in the image and use them as center of the image for cropping. If you specify the parameter `focused`, the image will focus and crop the image to the detected faces, or leave it blank to just align the image to the part that have faces.
-Usage: `.faceDetection('focused')`
+Usage: `.face_detection('focused')`
 
 
 ## fitIn
@@ -90,13 +90,13 @@ Usage: `.map()`
 - Changes the resized dimensions to the max of height and width and fit with the image ratio.
 Usage: `.max()`
 
-## maxAge
+## max_age
 - Changes the max-age header to be used for caching the image on the client side
-Usage: `.maxAge(3200)`
+Usage: `.max_age(3200)`
 
-## maxKb
+## max_kb
 - Sets the max file size of the output image, in kilobytes.
-Usage: `.maxKb(5)`
+Usage: `.max_kb(5)`
 
 ## min
 - Changes the resized dimensions to the min of height and width and fit with the image ratio.
