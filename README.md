@@ -131,7 +131,6 @@ Usage: `.rotate(90)`
 Usage: `.round()`
 
 ## tile
-## map
 - Creates a URL to generate tiles in the zoomify format for the informed image. The origin image has no size limitations. All other operations will be removed when using it.
 Usage: `.tile()`
 
