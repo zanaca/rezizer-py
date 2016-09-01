@@ -6,9 +6,9 @@ import hashlib
 import re
 
 __concatenatedOperations = ['tint', 'background', 'blur', 'format', 'max-age',
-                          'max-kb', 'overlay', 'quality', 'rotate', 'align']
+                          'max-kb', 'overlay', 'quality', 'rotate', 'align', 'extend']
 
-__simpleOperations = ['distort', 'extend', 'fit', 'fit-in', 'flip', 'flop',
+__simpleOperations = ['distort', 'fit', 'fit-in', 'flip', 'flop',
                     'tile', 'grayscale', 'invert', 'map', 'max', 'min',
                     'progressive', 'round']
 
