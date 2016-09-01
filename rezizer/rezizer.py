@@ -13,7 +13,7 @@ __simpleOperations = ['distort', 'fit', 'fit-in', 'flip', 'flop',
                     'progressive', 'round']
 
 
-def __buildPath(operations):
+def _buildPath(operations):
     parts = []
 
     if 'tile' in operations:
@@ -87,7 +87,7 @@ def __buildPath(operations):
     return '/'.join(parts)
 
 
-def __generateHash(secret=None, url=None):
+def _generateHash(secret=None, url=None):
     if not secret:
         return None
 
@@ -109,9 +109,9 @@ class rezizerUrl:
         return self.generate()
 
     def generate(self):
-        path = __buildPath(self.operations)
+        path = _buildPath(self.operations)
         if self.secret:
-            path = __generateHash(self.secret, path) + '/' + path
+            path = _generateHash(self.secret, path) + '/' + path
 
         path += '/' + self.rawImageUrl
 
@@ -195,4 +195,4 @@ for operation in __concatenatedOperations:
 
     setattr(rezizerUrl, operation, _method)
 
-__all__ = rezizerUrl
+__all__ = [rezizerUrl]
