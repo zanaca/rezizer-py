@@ -5,15 +5,15 @@ import hmac
 import hashlib
 import re
 
-concatenatedOperations = ['tint', 'background', 'blur', 'format', 'max-age',
+__concatenatedOperations = ['tint', 'background', 'blur', 'format', 'max-age',
                           'max-kb', 'overlay', 'quality', 'rotate', 'align']
 
-simpleOperations = ['distort', 'extend', 'fit', 'fit-in', 'flip', 'flop',
+__simpleOperations = ['distort', 'extend', 'fit', 'fit-in', 'flip', 'flop',
                     'tile', 'grayscale', 'invert', 'map', 'max', 'min',
                     'progressive', 'round']
 
 
-def buildPath(operations):
+def __buildPath(operations):
     parts = []
 
     if 'tile' in operations:
@@ -76,7 +76,7 @@ def buildPath(operations):
 
             parts.append(faceOperataion)
 
-        elif operation in concatenatedOperations:
+        elif operation in __concatenatedOperations:
             if not operations[operation]:
                 operations[operation] = ''
             parts.append(operation + ':' + operations[operation])
@@ -87,7 +87,7 @@ def buildPath(operations):
     return '/'.join(parts)
 
 
-def generateHash(secret=None, url=None):
+def __generateHash(secret=None, url=None):
     if not secret:
         return None
 
@@ -95,7 +95,7 @@ def generateHash(secret=None, url=None):
     return hash.replace('+', '-').replace('/', '_').strip()
 
 
-class rezizer:
+class rezizerUrl:
     serverUrl = None
     secret = None
     operations = {}
@@ -109,9 +109,9 @@ class rezizer:
         return self.generate()
 
     def generate(self):
-        path = buildPath(self.operations)
+        path = __buildPath(self.operations)
         if self.secret:
-            path = generateHash(self.secret, path) + '/' + path
+            path = __generateHash(self.secret, path) + '/' + path
 
         path += '/' + self.rawImageUrl
 
@@ -160,7 +160,7 @@ def __simpleFunction(name):
     return _method
 
 
-for operation in simpleOperations:
+for operation in __simpleOperations:
     _method = __simpleFunction(operation)
     if operation == 'fit-in':
         operation = 'fitIn'
@@ -182,7 +182,7 @@ def __concatenatedFunction(name, value=None):
 
     return _method
 
-for operation in concatenatedOperations:
+for operation in __concatenatedOperations:
     _method = __concatenatedFunction(operation)
     if operation == 'overlay':
         continue
@@ -195,4 +195,4 @@ for operation in concatenatedOperations:
 
     setattr(rezizerUrl, operation, _method)
 
-__all__ = [rezizer]
+__all__ = rezizerUrl
