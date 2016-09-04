@@ -1,3 +1,3 @@
-from rezizer import rezizerUrl
+from rezizer import rezizer
 
-__all__ = [rezizerUrl]
+__all__ = [rezizer]

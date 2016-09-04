@@ -5,7 +5,7 @@ import hmac
 import hashlib
 import re
 
-__concatenatedOperations = ['tint', 'background', 'blur', 'format', 'max-age',
+__concatenatedOperations = ['tint', 'background', 'blur', 'format', 'max-age', 'color-filter',
                           'max-kb', 'overlay', 'quality', 'rotate', 'align', 'extend']
 
 __simpleOperations = ['distort', 'fit', 'fit-in', 'flip', 'flop',
@@ -13,7 +13,7 @@ __simpleOperations = ['distort', 'fit', 'fit-in', 'flip', 'flop',
                     'progressive', 'round']
 
 
-def _buildPath(operations):
+def _build_path(operations):
     parts = []
 
     if 'tile' in operations:
@@ -87,7 +87,7 @@ def _buildPath(operations):
     return '/'.join(parts)
 
 
-def _generateHash(secret=None, url=None):
+def _generate_hash(secret=None, url=None):
     if not secret:
         return None
 
@@ -95,7 +95,7 @@ def _generateHash(secret=None, url=None):
     return hash.replace('+', '-').replace('/', '_').strip()
 
 
-class rezizerUrl:
+class rezizer:
     serverUrl = None
     secret = None
     operations = {}
@@ -109,15 +109,16 @@ class rezizerUrl:
         return self.generate()
 
     def generate(self):
-        path = _buildPath(self.operations)
+        path = _build_path(self.operations)
+        self.operations = {}
         if self.secret:
-            path = _generateHash(self.secret, path) + '/' + path
+            path = _generate_hash(self.secret, path) + '/' + path
 
         path += '/' + self.rawImageUrl
 
         return self.serverUrl + '/' + path
 
-    def withUrl(self, url=None):
+    def with_url(self, url=None):
         self.rawImageUrl = url
 
         return self
@@ -143,8 +144,12 @@ valid integers')
         self.operations['overlay'] = url + ':' + align
         return self
 
-    def faceDetection(self, inFocus=False):
+    def face_detection(self, inFocus=False):
         self.operations['face'] = 'focused' if inFocus else True
+        return self
+
+    def color_filter(self, filter=False):
+        self.operations['color-filter'] = filter
         return self
 
     def smart(self):
@@ -163,9 +168,9 @@ def __simpleFunction(name):
 for operation in __simpleOperations:
     _method = __simpleFunction(operation)
     if operation == 'fit-in':
-        operation = 'fitIn'
+        operation = 'fit_in'
 
-    setattr(rezizerUrl, operation, _method)
+    setattr(rezizer, operation, _method)
 
 
 def __concatenatedFunction(name, value=None):
@@ -187,12 +192,8 @@ for operation in __concatenatedOperations:
     if operation == 'overlay':
         continue
 
-    if operation == 'max-kb':
-        method = 'maxKb'
+    operation = operation.replace('-', '_')
 
-    if operation == 'max-age':
-        method = 'maxAge'
+    setattr(rezizer, operation, _method)
 
-    setattr(rezizerUrl, operation, _method)
-
-__all__ = [rezizerUrl]
+__all__ = [rezizer]
